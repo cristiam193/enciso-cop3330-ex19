@@ -36,10 +36,30 @@ public class App {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         System.out.print("What is your height in inches? ");
-        int height = in.nextInt();
+        while (!in.hasNextDouble()) {
+            in.next();
+            System.out.print("What is your height in inches? ");
+        }
+        double height = in.nextDouble();
         System.out.print("What is your weight in pounds? ");
-        int weight = in.nextInt();
+        while(!in.hasNextDouble()){
+            in.next();
+            System.out.print("What is your height in inches? ");
+        }
+        double weight = in.nextDouble();
+
         double bmi = (weight / (height * height)) * 703;
-        
+        System.out.printf("Your BMI is %.1f\n", bmi);
+        if (bmi < 18.5) {
+            System.out.println("Ypu are underweight. You should see a doctor.");
+        }
+        else if ((bmi >= 18.5) && (bmi <= 25)) {
+            System.out.println("You are withing the ideal weight range.");
+        }
+        else {
+                System.out.println("You are overweight. You should see your doctor.");
+        }
+
+
     }
 }
